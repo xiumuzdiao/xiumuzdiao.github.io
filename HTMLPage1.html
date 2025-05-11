@@ -1,0 +1,475 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>Xiumuzidiao</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #181c24;
+            color: #f1f1f1;
+            min-height: 100vh;
+        }
+
+        .center-btn-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+        }
+
+        .cool-btn {
+            padding: 20px 60px;
+            font-size: 1.5rem;
+            color: #fff;
+            background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+            border: none;
+            border-radius: 40px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+        }
+
+            .cool-btn:hover {
+                transform: scale(1.08);
+                box-shadow: 0 12px 40px 0 rgba(0, 114, 255, 0.4);
+            }
+
+        .content-section {
+            padding: 60px 0 40px 0;
+            background: #181c24;
+        }
+
+        .software-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .software-card {
+            background: rgba(36, 37, 42, 0.95);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border-left: 6px solid #00c6ff;
+        }
+
+        .software-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #00c6ff;
+        }
+
+        .software-desc {
+            font-size: 1.1rem;
+            color: #b0b8c1;
+        }
+
+        .download-btn {
+            align-self: flex-start;
+            padding: 10px 28px;
+            background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+            color: #fff;
+            border: none;
+            border-radius: 24px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+            .download-btn:hover {
+                background: linear-gradient(90deg, #0072ff 0%, #00c6ff 100%);
+            }
+
+        footer {
+            text-align: center;
+            padding: 24px 0 16px 0;
+            color: #888;
+            font-size: 0.95rem;
+            background: #181c24;
+            border-top: 1px solid #232526;
+        }
+
+        @media (max-width: 600px) {
+            .software-card {
+                padding: 18px;
+            }
+
+            .center-btn-container {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 动态五角星背景 -->
+    <canvas id="star-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-2;"></canvas>
+    <!-- 鼠标粒子特效canvas -->
+    <canvas id="mouse-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:999;"></canvas>
+
+    <div class="center-btn-container" id="top-section">
+        <div class="btn-border-animate">
+            <a href="https://github.com/xiumuzdiao" class="cool-btn" target="_blank">Xiumuzidiao 的 Gtihub</a>
+        </div>
+        <div style="margin-top:40px; color:#b0b8c1; font-size:1.1rem;">欢迎来到 Xiumuzidiao 的个人页面</div>
+        <div style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);font-size:2rem;color:#a259ff;opacity:0.7;">
+            ↓
+        </div>
+    </div>
+
+    <div class="content-section">
+        <div class="software-list">
+            <div class="software-card">
+                <div class="software-title">Grand Theft Auto V Platform Switcher</div>
+                <div class="software-desc">GTA5启动平台转换器中文版，允许 GTA5 在 Rockstar Games Launcher、Steam 和 Epic Games Launcher 之间切换启动器。</div>
+                <a class="download-btn" href="https://github.com/xiumuzdiao/Grand-Theft-Auto-V-Platform-Switcher/releases" target="_blank">下载</a>
+            </div>
+            <div class="software-card">
+                <div class="software-title">Dlc Pack Creator</div>
+                <div class="software-desc">GTA5 DLC包创建工具（Dlc Pack Creator）汉化版</div>
+                <a class="download-btn" href="https://github.com/xiumuzdiao/DlcPackCreator/releases" target="_blank">下载</a>
+            </div>
+            <div class="software-card">
+                <div class="software-title">Addon Creator Vehicles</div>
+                <div class="software-desc">附加车辆创建工具（Addon Creator Vehicles）汉化版</div>
+                <a class="download-btn" href="https://github.com/xiumuzdiao/Addon-Vehicles-Creator/releases" target="_blank">下载</a>
+            </div>
+            <div class="software-card">
+                <div class="software-title">GTAOnlineTools</div>
+                <div class="software-desc">GTA线上小助手（GTAOnlineTools）备份文件，原作者已删库，原作网站已关闭，目前停止访问。</div>
+                <a class="download-btn" href="https://github.com/xiumuzdiao/GTAOnlineTools" target="_blank">下载</a>
+            </div>
+        </div>
+    </div>
+
+    <button id="backToTop" title="回到顶部">↑</button>
+
+    <footer>
+        Copyright © 2025 Xiumuzidiao. 基于 MIT 许可协议发布。
+    </footer>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #181c24;
+            color: #f1f1f1;
+            min-height: 100vh;
+        }
+
+        .center-btn-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            position: relative;
+        }
+
+        .btn-border-animate {
+            padding: 8px;
+            border-radius: 24px;
+            background: linear-gradient(120deg, #3a1c71, #a259ff, #3a1c71, #232526);
+            background-size: 300% 300%;
+            animation: borderMove 3s linear infinite;
+            display: inline-block;
+            box-shadow: 0 0 24px 0 #a259ff55;
+        }
+
+        @keyframes borderMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .cool-btn {
+            padding: 20px 60px;
+            font-size: 1.5rem;
+            color: #fff;
+            background: linear-gradient(90deg, #6a3093 0%, #a044ff 100%);
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px 0 rgba(162, 89, 255, 0.37);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            position: relative;
+            z-index: 1;
+        }
+
+            .cool-btn:hover {
+                transform: scale(1.08);
+                box-shadow: 0 12px 40px 0 rgba(162, 89, 255, 0.4);
+            }
+
+        .content-section {
+            padding: 60px 0 40px 0;
+            background: transparent;
+        }
+
+        .software-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .software-card {
+            background: rgba(36, 37, 42, 0.95);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border-left: 6px solid #a259ff;
+        }
+
+        .software-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #a259ff;
+        }
+
+        .software-desc {
+            font-size: 1.1rem;
+            color: #b0b8c1;
+        }
+
+        .download-btn {
+            align-self: flex-start;
+            padding: 10px 28px;
+            background: linear-gradient(90deg, #6a3093 0%, #a044ff 100%);
+            color: #fff;
+            border: none;
+            border-radius: 24px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+            .download-btn:hover {
+                background: linear-gradient(90deg, #a044ff 0%, #6a3093 100%);
+            }
+
+        #backToTop {
+            display: none;
+            position: fixed;
+            right: 32px;
+            bottom: 32px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #3a1c71 0%, #a259ff 100%);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            font-size: 2rem;
+            box-shadow: 0 4px 24px #a259ff55;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+            #backToTop:hover {
+                background: linear-gradient(135deg, #a259ff 0%, #3a1c71 100%);
+                transform: scale(1.1);
+            }
+
+        footer {
+            text-align: center;
+            padding: 24px 0 16px 0;
+            color: #888;
+            font-size: 0.95rem;
+            background: transparent;
+            border-top: 1px solid #232526;
+        }
+
+        @media (max-width: 600px) {
+            .software-card {
+                padding: 18px;
+            }
+
+            .center-btn-container {
+                padding: 0 10px;
+            }
+
+            #backToTop {
+                right: 12px;
+                bottom: 12px;
+                width: 44px;
+                height: 44px;
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+    <script>
+        // 动态五角星背景
+        const starCanvas = document.getElementById('star-canvas');
+        const starCtx = starCanvas.getContext('2d');
+        let stars = [];
+        function resizeStarCanvas() {
+            starCanvas.width = window.innerWidth;
+            starCanvas.height = window.innerHeight;
+        }
+        function randomPurple() {
+            // 渐变暗紫色
+            const purples = [
+                "#3a1c71", "#a259ff", "#6a3093", "#232526", "#5f2c82", "#2b133d"
+            ];
+            return purples[Math.floor(Math.random() * purples.length)];
+        }
+        function createStar() {
+            const x = Math.random() * starCanvas.width;
+            const y = Math.random() * starCanvas.height;
+            const r = 8 + Math.random() * 12;
+            const speed = 0.1 + Math.random() * 0.3;
+            const angle = Math.random() * Math.PI * 2;
+            return {
+                x, y, r,
+                speed,
+                angle,
+                color: randomPurple(),
+                rotate: Math.random() * Math.PI * 2,
+                rotateSpeed: (Math.random() - 0.5) * 0.01
+            };
+        }
+        function drawStar(ctx, x, y, r, color, rotate) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(rotate);
+            ctx.beginPath();
+            for (let i = 0; i < 5; i++) {
+                ctx.lineTo(
+                    Math.cos((18 + i * 72) / 180 * Math.PI) * r,
+                    -Math.sin((18 + i * 72) / 180 * Math.PI) * r
+                );
+                ctx.lineTo(
+                    Math.cos((54 + i * 72) / 180 * Math.PI) * (r / 2.5),
+                    -Math.sin((54 + i * 72) / 180 * Math.PI) * (r / 2.5)
+                );
+            }
+            ctx.closePath();
+            // 渐变填充
+            let grad = ctx.createRadialGradient(0, 0, r * 0.2, 0, 0, r);
+            grad.addColorStop(0, "#fff");
+            grad.addColorStop(0.3, color);
+            grad.addColorStop(1, "#181c24");
+            ctx.fillStyle = grad;
+            ctx.shadowColor = color;
+            ctx.shadowBlur = 16;
+            ctx.fill();
+            ctx.restore();
+        }
+        function animateStars() {
+            starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
+            for (let star of stars) {
+                star.x += Math.cos(star.angle) * star.speed;
+                star.y += Math.sin(star.angle) * star.speed;
+                star.rotate += star.rotateSpeed;
+                // 循环移动
+                if (star.x < -star.r) star.x = starCanvas.width + star.r;
+                if (star.x > starCanvas.width + star.r) star.x = -star.r;
+                if (star.y < -star.r) star.y = starCanvas.height + star.r;
+                if (star.y > starCanvas.height + star.r) star.y = -star.r;
+                drawStar(starCtx, star.x, star.y, star.r, star.color, star.rotate);
+            }
+            requestAnimationFrame(animateStars);
+        }
+        function initStars() {
+            stars = [];
+            const count = Math.floor(window.innerWidth * window.innerHeight / 3500);
+            for (let i = 0; i < count; i++) {
+                stars.push(createStar());
+            }
+        }
+        window.addEventListener('resize', () => {
+            resizeStarCanvas();
+            initStars();
+        });
+        resizeStarCanvas();
+        initStars();
+        animateStars();
+
+        // 鼠标粒子尾迹动画（保留）
+        const mouseCanvas = document.getElementById('mouse-canvas');
+        const mouseCtx = mouseCanvas.getContext('2d');
+        function resizeMouse() {
+            mouseCanvas.width = window.innerWidth;
+            mouseCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeMouse);
+        resizeMouse();
+
+        let particles = [];
+        document.addEventListener('mousemove', function (e) {
+            for (let i = 0; i < 3; i++) {
+                particles.push({
+                    x: e.clientX,
+                    y: e.clientY,
+                    vx: (Math.random() - 0.5) * 2,
+                    vy: (Math.random() - 0.5) * 2,
+                    alpha: 1,
+                    radius: 3 + Math.random() * 3,
+                    color: `hsl(${260 + Math.random() * 40},80%,70%)`
+                });
+            }
+        });
+
+        function drawParticles() {
+            mouseCtx.clearRect(0, 0, mouseCanvas.width, mouseCanvas.height);
+            for (let i = particles.length - 1; i >= 0; i--) {
+                let p = particles[i];
+                mouseCtx.globalAlpha = p.alpha;
+                mouseCtx.beginPath();
+                mouseCtx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
+                mouseCtx.fillStyle = p.color;
+                mouseCtx.shadowColor = p.color;
+                mouseCtx.shadowBlur = 12;
+                mouseCtx.fill();
+                p.x += p.vx;
+                p.y += p.vy;
+                p.alpha -= 0.02;
+                if (p.alpha <= 0) particles.splice(i, 1);
+            }
+            mouseCtx.globalAlpha = 1;
+            requestAnimationFrame(drawParticles);
+        }
+        drawParticles();
+
+        // 回到顶部按钮
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > window.innerHeight * 0.3) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        backToTop.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
